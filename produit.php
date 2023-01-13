@@ -8,11 +8,9 @@ if (isset($_REQUEST['del'])) {
     $sup = intval($_GET['del']);
 
 
-    $sql = "DELETE FROM produit WHERE id = :id_prod";
-
+    $sql = "DELETE FROM produit WHERE id_prod = :id_prod";
     $query = $pdo->prepare($sql);
-
-    $query->bindParam(':id_prod', $id_prod, $sup,  PDO::PARAM_INT);
+    $query->bindParam(':id_prod', $sup,  PDO::PARAM_INT);
 
     $query->execute();
 
@@ -37,7 +35,6 @@ if (isset($_REQUEST['del'])) {
     <div class="container">
         <table class="table table-striped display mt-3" id="example">
             <thead>
-                <th>Id</th>
                 <th>Designation</th>
                 <th>Etat en stock</th>
                 <th>Action</th>
@@ -48,14 +45,13 @@ if (isset($_REQUEST['del'])) {
                 ?>
 
                     <tr>
-                        <td><?php echo $row->id_prod; ?> </td>
                         <td><?php echo $row->nom_prod; ?> </td>
                         <td> <span class="badge bg-success">en Stock</span> </td>
                         <td>
 
-                            <a href="updateProduit.php?id=<?php echo $row->id; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
-                            <a href="produit.php?del=<?php echo $row->id; ?>">
-                                <button class="btn btn-danger">
+                            <a href="updateProduit.php?id=<?php echo $row->id_prod; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                            <a href="produit.php?del=<?php echo $row->id_prod; ?>">
+                                <button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </a>
@@ -82,5 +78,3 @@ if (isset($_REQUEST['del'])) {
 </body>
 
 </html>
-
-OnClick="return confirm ('Voulez vous vraiment suprimer ?')"

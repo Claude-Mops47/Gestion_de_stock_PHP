@@ -18,6 +18,20 @@ if (
     header('Location:entrepot.php');
 }
 $stmt = $pdo->query('SELECT * FROM entrepot');
+
+if (isset($_REQUEST['del'])) {
+
+    $sup = intval($_GET['del']);
+
+
+    $sql = "DELETE FROM entrepot WHERE id_entrepot = :id_entrepot";
+    $query = $pdo->prepare($sql);
+    $query->bindParam(':id_entrepot', $sup,  PDO::PARAM_INT);
+
+    $query->execute();
+
+    echo "<script> window.location.href='entrepot.php'</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -64,8 +78,8 @@ $stmt = $pdo->query('SELECT * FROM entrepot');
                             <td><?php echo $row->num_entrepot; ?> </td>
                             <td><?php echo $row->nom_entrepot; ?> </td>
                             <td>
-                                <a href="updateProduit.php?id=<?php echo $row->id; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
-                                <a href="produit.php?del=<?php echo $row->id; ?>"><button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')"><i class="fas fa-trash"></i></button></a>
+                                <a href="updateProduit.php?id=<?php echo $row->id_entrepot; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                                <a href="produit.php?del=<?php echo $row->id_entrepot; ?>"><button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')"><i class="fas fa-trash"></i></button></a>
                             </td>
                         </tr>
                     <?php } ?>
