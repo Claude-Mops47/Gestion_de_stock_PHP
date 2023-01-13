@@ -5,12 +5,9 @@ require_once 'db.php';
 
 // ajouter un produit depuis le formulaire 
 
-if (
-    isset($_POST['add']) && !empty($_POST['nom_prod'])
+if (isset($_POST['add']) && !empty($_POST['nom_prod'])) {
 
-) {
     $nom_prod = $_POST['nom_prod'];
-
     $sql = "INSERT INTO produit(nom_prod) VALUES (:nom_prod)";
     $stmt = $pdo->prepare($sql);
 
@@ -19,7 +16,9 @@ if (
     $stmt->execute();
 
     header('Location:index.php');
+    echo "<script> alert('Registration Successful'); </script>";
 }
+
 $stmt = $pdo->query('SELECT * FROM produit');
 ?>
 
@@ -38,7 +37,6 @@ $stmt = $pdo->query('SELECT * FROM produit');
     <?php require_once 'navbar.php'; ?>
 
     <div class="container">
-
         <h2>Ajouter un Produit</h2>
         <form action="index.php" class="form-group mt-3" method="POST" enctype="multipart/form-data">
             <label for="">Designation du Produit :</label>

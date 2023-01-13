@@ -4,16 +4,11 @@ require_once 'db.php';
 $stmt = $pdo->query('SELECT * FROM produit');
 
 if (isset($_REQUEST['del'])) {
-
     $sup = intval($_GET['del']);
-
-
     $sql = "DELETE FROM produit WHERE id_prod = :id_prod";
     $query = $pdo->prepare($sql);
     $query->bindParam(':id_prod', $sup,  PDO::PARAM_INT);
-
     $query->execute();
-
     echo "<script> window.location.href='produit.php'</script>";
 }
 

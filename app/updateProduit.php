@@ -2,15 +2,15 @@
 
 require_once 'db.php';
 
-if (isset($_POST['updatebtn'])) {
-        $userid = intval($_GET['id_prod']);
+if (isset($_POST['update_btn'])) {
+        $user_id = intval($_GET['id_prod']);
         $nom_prod = $_POST['nom_prod'];
 
-        $sql = " UPDATE `produit` SET `nom_prod` = :nomprod WHERE id_prod = :nouvelleid ";
+        $sql = " UPDATE `produit` SET `nom_prod` = :nom_prod WHERE id_prod = :nouvelle_id ";
 
         $query = $pdo->prepare($sql);
-        $query->bindParam(':nouvelleid', $userid, PDO::PARAM_INT);
-        $query->bindParam(':nomprod', $nom_prod, PDO::PARAM_STR);
+        $query->bindParam(':nouvelle_id', $user_id, PDO::PARAM_INT);
+        $query->bindParam(':nom_prod', $nom_prod, PDO::PARAM_STR);
 
         $query->execute();
 
@@ -37,26 +37,22 @@ if (isset($_POST['updatebtn'])) {
         <div class="container">
                 <div class="row">
                         <div class="col-8">
-
                                 <?php
-
-                                $userid = intval($_GET['id_prod']);
-                                $sql = "SELECT  `nom_prod` FROM `produit` WHERE id=:nouvelleid";
+                                $user_id = intval($_GET['id_prod']);
+                                $sql = "SELECT  nom_prod FROM produit WHERE id=:nouvelle_id";
 
                                 $query = $pdo->prepare($sql);
-                                $query->bindParam(':nouvelleid', $userid, PDO::PARAM_INT);
+                                $query->bindParam(':nouvelle_id', $user_id, PDO::PARAM_INT);
                                 $query->execute();
 
                                 $resultat = $query->fetchAll(PDO::FETCH_OBJ);
 
                                 foreach ($resultat as $row) {
                                 ?>
-
                                         <form action="" method="POST" class="form-group">
                                                 Nom Produit :
                                                 <input type="text" name="nom_prod" id="" class="form-control" value="<?php echo $row->nom_prod; ?>">
-
-                                                <input type="submit" name="updatebtn" id="" value="Metre a jours" class="btn btn-primary mt-3">
+                                                <input type="submit" name="update_btn" id="" value="Metre a jours" class="btn btn-primary mt-3">
                                         <?php } ?>
                                         </form>
                         </div>
