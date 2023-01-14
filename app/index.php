@@ -15,8 +15,7 @@ if (isset($_POST['add']) && !empty($_POST['nom_prod'])) {
 
     $stmt->execute();
 
-    header('Location:index.php');
-    echo "<script> alert('Registration Successful'); </script>";
+    header('Location:produit.php');
 }
 
 $stmt = $pdo->query('SELECT * FROM produit');
@@ -35,6 +34,12 @@ $stmt = $pdo->query('SELECT * FROM produit');
 
 <body>
     <?php require_once 'navbar.php'; ?>
+
+    <div>
+        <h2>Welcome <?php echo $row["nom_admin"] ?></h2>
+        <a href="../reglog/logout.php">Logout</a>
+    </div>
+
 
     <div class="container">
         <h2>Ajouter un Produit</h2>

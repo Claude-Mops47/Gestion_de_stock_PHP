@@ -18,8 +18,6 @@ if (!empty($_SESSION["id"])) {
 </head>
 
 <body>
-    <?php require_once '../app/navbar.php'; ?>
-
     <h2>Welcome <?php echo $row["nom_admin"] ?></h2>
     <a href="logout.php">Logout</a>
 </body>

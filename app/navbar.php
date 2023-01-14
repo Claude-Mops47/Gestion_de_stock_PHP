@@ -20,10 +20,10 @@
                 <p class="logo">Gestion De Stock</p>
             </a>
             <ul class="navlinks">
-                <li><a href="produit.php">Les Produits</a></li>
-                <li><a href="#">Etat de stock</a></li>
-                <li><a href="entrepot.php">Les Entrepots</a></li>
-                <li><a href="fournisseur.php">Les Fournisseurs</a></li>
+                <li><a href="produit.php">Produits</a></li>
+                <li><a href="commande.php">Commandes</a></li>
+                <li><a href="entrepot.php">Entrepots</a></li>
+                <li><a href="fournisseur.php">Fournisseurs</a></li>
             </ul>
         </nav>
     </header>

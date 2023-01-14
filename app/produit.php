@@ -28,6 +28,7 @@ if (isset($_REQUEST['del'])) {
 <body>
     <?php require_once 'navbar.php'; ?>
     <div class="container">
+        <h2>Liste des Produits</h2>
         <table class="table table-striped display mt-3" id="example">
             <thead>
                 <th>Designation</th>

@@ -2,7 +2,7 @@
 
 require 'config.php';
 if (!empty($_SESSION["id"])) {
-    header("Location: index.php");
+    header("Location: ../app/index.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
         if ($password == $row["password"]) {
             $_SESSION["login"] = true;
             $_SESSION["id"] = $row["id_admin"];
-            header("Location: index.php");
+            header("Location: ../app/index.php");
         } else {
             echo "<script> alert('Wrong Password'); </script>";
         }
@@ -35,20 +35,52 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <?php require_once '../app/navbar.php'; ?>
+    <?php require_once 'get_style.php'; ?>
 
-    <h2>Login</h2>
+    <div class="login">
 
-    <form class="" action="" method="post" autocomplete="off">
-        <label for="username_email">Username or Email</label>
-        <input type="text" name="username_email" id="" required value=""> <br>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="" required value=""> <br>
+        <h2>Login</h2>
 
-        <button type="submit" name="submit">Login</button>
-    </form>
-    <br>
-    <a href="register.php">Registration</a>
+        <form method="post" autocomplete="off">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="username_email" name="username_email" class="form-control" />
+                <label class="form-label" for="username_email">Email address</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="password" name="password" class="form-control" />
+                <label class="form-label" for="password">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" name="submit">Sign in</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="register.php">Register</a></p>
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </form>
+
+    </div>
+
 </body>
 
 

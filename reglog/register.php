@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 if (!empty($_SESSION["id"])) {
-    header("Location: index.php");
+    header("Location: ../app/index.php");
 }
 if (isset($_POST["submit"])) {
 
