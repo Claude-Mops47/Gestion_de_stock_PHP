@@ -19,14 +19,14 @@
 .navlinks li a {
   margin: 1em;
   text-decoration: none;
-  color: #ff6738;
+  color: #baa7a1;
 }
 
 .logo {
   margin-left: 5em;
   text-transform: uppercase;
   font-weight: bold;
-  color: #fec74e;
+  color: #bb891d;
 }
 .login {
   position: relative;

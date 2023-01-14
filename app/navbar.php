@@ -16,14 +16,14 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="index.php">
+            <a href="index.php" class="btn btn-primary">
                 <p class="logo">Gestion De Stock</p>
             </a>
             <ul class="navlinks">
-                <li><a href="produit.php">Produits</a></li>
-                <li><a href="commande.php">Commandes</a></li>
-                <li><a href="entrepot.php">Entrepots</a></li>
-                <li><a href="fournisseur.php">Fournisseurs</a></li>
+                <li><a href="produit.php" class="btn btn-primary">Produits</a></li>
+                <li><a href="commande.php" class="btn btn-primary">Commandes</a></li>
+                <li><a href="entrepot.php" class="btn btn-primary">Entrepots</a></li>
+                <li><a href="fournisseur.php" class="btn btn-primary">Fournisseurs</a></li>
             </ul>
         </nav>
     </header>
