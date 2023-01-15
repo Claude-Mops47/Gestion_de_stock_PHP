@@ -3,16 +3,23 @@
 require_once 'db.php';
 
 if (isset($_POST['update_btn'])) {
-        $user_id = intval($_GET['id']);
+        $id = intval($_GET['id']);
         $nom_prod = $_POST['nom_prod'];
 
         $sql = "UPDATE produit SET nom_prod=:nom_prod WHERE id_prod=:id";
-
         $query = $pdo->prepare($sql);
-        $query->bindParam(':id', $user_id, PDO::PARAM_INT);
+
+        $query->bindParam(':id', $id);
         $query->execute();
 
-        echo "<script> window.location.href='produit.php'</script>";
+        // Vérification du nombre de lignes affectées
+        $count = $query->rowCount();
+        if ($count > 0) {
+                echo "Mise à jour réussie.";
+                echo "<script> window.location.href='produit.php'</script>";
+        } else {
+                echo "Aucune mise à jour n'a été effectuée.";
+        }
 }
 
 ?>
@@ -52,7 +59,7 @@ if (isset($_POST['update_btn'])) {
                                 ?>
                                         <form action="" method="POST" class="form-group">
                                                 Nom Produit :
-                                                <input type="text" name="nom_prod" id="" class="form-control" value="<?php echo $row->nom_prod; ?>">
+                                                <input type="text" name="nom_prod" id="nom_prod" class="form-control" value="<?php echo $row->nom_prod; ?>">
                                                 <input type="submit" name="update_btn" id="" value="Metre a jour" class="btn btn-primary mt-3">
                                         </form>
                                 <?php } ?>

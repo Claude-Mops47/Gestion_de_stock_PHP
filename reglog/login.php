@@ -21,7 +21,9 @@ if (isset($_POST["submit"])) {
             echo "<script> alert('Wrong Password'); </script>";
         }
     } else {
-        echo "<script> alert('User Not Registered'); </script>";
+        echo "User Not Registered";
+
+        // echo "<script> alert('User Not Registered'); </script>";
     }
 }
 ?>
@@ -34,24 +36,25 @@ if (isset($_POST["submit"])) {
     <title>Login</title>
 </head>
 
+<?php require_once 'get_style.php'; ?>
+
 <body>
-    <?php require_once 'get_style.php'; ?>
 
     <div class="login">
 
-        <h2>Login</h2>
+        <h2>Login Gerant</h2>
 
         <form method="post" autocomplete="off">
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <input type="text" id="username_email" name="username_email" class="form-control" />
                 <label class="form-label" for="username_email">Email address</label>
+                <input type="text" id="username_email" name="username_email" class="form-control" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control" />
                 <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" />
             </div>
 
             <!-- Submit button -->
