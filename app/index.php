@@ -45,7 +45,7 @@ $stmt = $pdo->query('SELECT * FROM produit');
     <div class="container">
         <h2>Ajouter un Produit</h2>
         <form action="index.php" class="form-group mt-3" method="POST" enctype="multipart/form-data">
-            <label for="">Designation du Produit :</label>
+            <label for="">Nom du Produit :</label>
             <input type="text" class="form-control mt-3" name="nom_prod" required>
 
             <button type="submit" class="btn btn-primary mt-3" name="add">Enregistrer</button>
