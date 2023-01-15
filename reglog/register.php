@@ -1,8 +1,10 @@
 <?php
 require 'config.php';
-if (!empty($_SESSION["id"])) {
+
+if (!empty($_SESSION["id_admin"])) {
     header("Location: ../app/index.php");
 }
+
 if (isset($_POST["submit"])) {
 
     $nom_admin = $_POST["nom_admin"];
@@ -15,16 +17,19 @@ if (isset($_POST["submit"])) {
     $duplicate = mysqli_query($conn, "SELECT * FROM gerant WHERE nom_admin = '$nom_admin' OR email = '$email'");
 
     if (mysqli_num_rows($duplicate) > 0) {
-        echo "<script> alert('Username or Email Nas Already Taken'); </script>";
+        // echo "<scrip> alert('Username or Email Nas Already Taken'); </script>";
+        echo "Username or Email Nas Already Taken";
     } else {
         if ($password == $confirm_password) {
 
             $query = "INSERT INTO gerant VALUES('','$nom_admin','$tel','$email','$adresse','$password')";
 
             mysqli_query($conn, $query);
-            echo "<script> alert('Registration Successful'); </script>";
+            // echo "<script> alert('Registration Successful'); </script>";
+            echo "Registration Successful";
         } else {
-            echo "<script> alert('Password Does Not Match'); </script>";
+            // echo "<script> alert('Password Does Not Match'); </scrip>";
+            echo "Password Does Not Match";
         }
     }
 }
