@@ -10,7 +10,7 @@ if (
     && !empty($_POST['adresse'])
 ) {
 
-    $nom_entrepot = $_POST['nom_fournisseur'];
+    $nom_fournisseur = $_POST['nom_fournisseur'];
     $prenom = $_POST['prenom'];
     $tel = $_POST['tel'];
     $email = $_POST['email'];
@@ -52,69 +52,75 @@ if (isset($_REQUEST['del'])) {
     <title>Entrepots</title>
 </head>
 
+<?php require_once 'navbar.php'; ?>
+
 <body>
-    <?php require_once 'navbar.php'; ?>
+    <section>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-2 mt-3">
-                <h4>Ajouter un Fournisseur</h4>
-                <form action="" class="form-group mt-3" method="POST" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-2 mt-3">
+                    <h4>Ajouter un Fournisseur</h4>
+                    <form action="" class="form-group mt-3" method="POST" enctype="multipart/form-data">
 
-                    <label for="nom_fournisseur">Nom :</label>
-                    <input type="text" class="form-control mt-3" name="nom_fournisseur" required>
+                        <label for="nom_fournisseur">Nom :</label>
+                        <input type="text" class="form-control mt-3" name="nom_fournisseur" required>
 
-                    <label for="prenom">Prenom :</label>
-                    <input type="text" class="form-control mt-3" name="prenom" required>
+                        <label for="prenom">Prenom :</label>
+                        <input type="text" class="form-control mt-3" name="prenom" required>
 
-                    <label for="tel">Telephone :</label>
-                    <input type="text" class="form-control mt-3" name="tel" required>
+                        <label for="tel">Telephone :</label>
+                        <input type="text" class="form-control mt-3" name="tel" required>
 
-                    <label for="email">Email :</label>
-                    <input type="text" class="form-control mt-3" name="email" required>
+                        <label for="email">Email :</label>
+                        <input type="text" class="form-control mt-3" name="email" required>
 
-                    <label for="adresse">Adresse :</label>
-                    <input type="text" class="form-control mt-3" name="adresse" required>
+                        <label for="adresse">Adresse :</label>
+                        <input type="text" class="form-control mt-3" name="adresse" required>
 
 
-                    <button type="submit" class="btn btn-primary mt-3" name="add">Enregistrer</button>
-                </form>
-            </div>
+                        <button type="submit" class="btn btn-primary mt-3" name="add">Enregistrer</button>
+                    </form>
+                </div>
 
-            <div class="col-10 mt-3">
-                <h3>Liste des Fournisseurs</h3>
-                <table class="table table-striped display mt-3" id="example">
-                    <thead>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>Adresse</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($row =  $stmt->fetch()) {
-                        ?>
+                <div class="col-10 mt-3">
+                    <h3>Liste des Fournisseurs</h3>
+                    <table class="table table-striped display mt-3" id="example">
+                        <thead>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Telephone</th>
+                            <th>Email</th>
+                            <th>Adresse</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row =  $stmt->fetch()) {
+                            ?>
 
-                            <tr>
-                                <td><?php echo $row->nom_fournisseur; ?> </td>
-                                <td><?php echo $row->prenom; ?> </td>
-                                <td><?php echo $row->tel; ?> </td>
-                                <td><?php echo $row->email; ?> </td>
-                                <td><?php echo $row->adresse; ?> </td>
-                                <td>
-                                    <a href="updateProduit.php?id=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
-                                    <a href="fournisseur.php?del=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')"><i class="fas fa-trash"></i></button></a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                                <tr>
+                                    <td><?php echo $row->nom_fournisseur; ?> </td>
+                                    <td><?php echo $row->prenom; ?> </td>
+                                    <td><?php echo $row->tel; ?> </td>
+                                    <td><?php echo $row->email; ?> </td>
+                                    <td><?php echo $row->adresse; ?> </td>
+                                    <td>
+                                        <a href="updateProduit.php?id=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                                        <a href="fournisseur.php?del=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')"><i class="fas fa-trash"></i></button></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+
+    </section>
+
 
 </body>
+<?php require_once 'footer.php'; ?>
 
 </html>

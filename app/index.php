@@ -32,8 +32,9 @@ $stmt = $pdo->query('SELECT * FROM produit');
     <title>Gestion de Stock</title>
 </head>
 
+<?php require_once 'navbar.php'; ?>
+
 <body>
-    <?php require_once 'navbar.php'; ?>
 
     <div>
         <h2>Welcome <?php echo $row["nom_admin"] ?></h2>
@@ -53,5 +54,6 @@ $stmt = $pdo->query('SELECT * FROM produit');
     </div>
 
 </body>
+<?php require_once 'footer.php'; ?>
 
 </html>

@@ -25,8 +25,9 @@ if (isset($_REQUEST['del'])) {
     <title>Produit</title>
 </head>
 
+<?php require_once 'navbar.php'; ?>
+
 <body>
-    <?php require_once 'navbar.php'; ?>
     <div class="container">
         <h2>Liste des Produits</h2>
         <table class="table table-striped display mt-3" id="example">
@@ -72,5 +73,6 @@ if (isset($_REQUEST['del'])) {
 
 
 </body>
+<?php require_once 'footer.php'; ?>
 
 </html>

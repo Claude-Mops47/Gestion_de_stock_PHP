@@ -1,9 +1,9 @@
 <?php
 // on va creer une connexion a la base de donnees
 
-$host = 'localhost';
-$user = "Winds";
-$pass = "";
+$host = 'localhost:3306';
+$user = "root";
+$pass = "Secret Key";
 $dbname = "gestion_de_stock";
 
 try {

@@ -1,10 +1,13 @@
 <?php
 require_once 'db.php';
 
+$msg = "";
+
 if (isset($_POST['add']) && !empty($_POST['nom_entrepot']) && !empty($_POST['num_entrepot'])) {
 
     $nom_entrepot = $_POST['nom_entrepot'];
     $num_entrepot = $_POST['num_entrepot'];
+    $msg = "Success!" . $nom_entrepot;
 
     $sql = "INSERT INTO entrepot(nom_entrepot, num_entrepot) VALUES (:nom_entrepot, :num_entrepot)";
     $stmt = $pdo->prepare($sql);
@@ -39,8 +42,9 @@ if (isset($_REQUEST['del'])) {
     <title>Entrepots</title>
 </head>
 
+<?php require_once 'navbar.php'; ?>
+
 <body>
-    <?php require_once 'navbar.php'; ?>
 
     <div class="container">
         <div class="row">
@@ -85,5 +89,6 @@ if (isset($_REQUEST['del'])) {
     </div>
 
 </body>
+<?php require_once 'footer.php'; ?>
 
 </html>

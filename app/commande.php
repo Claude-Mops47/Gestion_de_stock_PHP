@@ -6,22 +6,17 @@ if (
     && !empty($_POST['nom_comm'])
     && !empty($_POST['qte_comm'])
     && !empty($_POST['type_comm'])
-    && !empty($_POST['date_comm'])
-
 ) {
     $nom_comm = $_POST['nom_comm'];
     $qte_comm = $_POST['qte_comm'];
     $type_comm = $_POST['type_comm'];
-    $date_comm = $_POST['date_comm'];
 
-    $sql = "INSERT INTO produit(nom_comm, qte_comm, type_comm, date_comm)
-         VALUES (:nom_comm, :qte_comm, :type_comm, :date_comm)";
+    $sql = "INSERT INTO commande(nom_comm, qte_comm, type_comm) VALUES (:nom_comm, :qte_comm, :type_comm)";
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom_comm', $nom_comm);
     $stmt->bindParam(':qte_comm', $qte_comm);
     $stmt->bindParam(':type_comm', $type_comm);
-    $stmt->bindParam(':date_comm', $date_comm);
 
     $stmt->execute();
 
@@ -42,20 +37,21 @@ $stmt = $pdo->query('SELECT * FROM commande');
     <title>Commande</title>
 </head>
 
+<?php require_once 'navbar.php'; ?>
+
 <body>
-    <?php require_once 'navbar.php'; ?>
 
     <div class="container">
         <div class="row">
             <div class="col-2 mt-3">
                 <form action="" class="form-group mt-3" method="POST" enctype="multipart/form-data">
-
-                    <label for="">Designation :</label>
+                    <label for="nom_comm">Designation :</label>
                     <input type="text" class="form-control mt-3" name="nom_comm" required>
-                    <label for="">Quantite :</label>
+                    <label for="qte_comm">Quantite :</label>
                     <input type="text" class="form-control mt-3" name="qte_comm" required>
-                    <label for="">Type :</label>
+                    <label for="type_comm">Type :</label>
                     <input type="text" class="form-control mt-3" name="type_comm" required>
+
                     <button type="submit" class="btn btn-primary mt-3" name="add">Enregistrer</button>
                 </form>
             </div>
@@ -94,5 +90,6 @@ $stmt = $pdo->query('SELECT * FROM commande');
         });
     </script>
 </body>
+<?php require_once 'footer.php'; ?>
 
 </html>
