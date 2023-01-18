@@ -7,14 +7,62 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="range" id="r" />
-    <input id="t" />
+    <!-- <section>
+      <input type="range" id="r" />
+      <input id="t" />
 
-    <div id="d"></div>
-    <span id="s"></span>
-    <h4 id="h"></h4>
+      <div id="d"></div>
+      <span id="s"></span>
+      <h4 id="h"></h4>
+    </section> -->
+
+    <div class="circle">
+      <div class="progress-bar">
+        <div class="number" data-value="100"></div>
+      </div>
+    </div>
   </body>
+  <style>
+    .progress-bar {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      color: #fff;
+      outline: 2px solid #7effb2;
+    }
+    .progress-bar::after,
+    .number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .progress-bar::after {
+      content: "";
+      width: 110px;
+      height: 110px;
+      border-radius: inherit;
+      outline: inherit;
+    }
+    .number {
+      font-size: 21px;
+      font-weight: bold;
+    }
+    .circle {
+      stroke-dasharray: 410;
+      stroke-dashoffset: 410;
+      transform: rotate(-90deg);
+      animation: bar-fill 8s linear forwards;
+    }
+    @keyframes bar-fill {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
   <script>
+    // range
     r.oninput = c;
     function c() {
       t.value = this.value;
@@ -23,5 +71,17 @@
       h.innerText = this.value;
       console.log(t.value);
     }
+
+    // create a circular progress bar
+    const num = document.querySelector(".number");
+    const numVal = Number(num.getAttribute("data-value"));
+    let counter = 0;
+
+    setInterval(() => {
+      if (counter !== numVal) {
+        counter++;
+        num.innerHTML = `${counter}%`;
+      }
+    }, 90);
   </script>
 </html>
