@@ -15,8 +15,17 @@ if (isset($_POST['add']) && !empty($_POST['nom_prod'])) {
 
     $stmt->execute();
 
+    // Vérification du nombre de lignes affectées
+    $count = $stmt->rowCount();
+    if ($count > 0) {
+        echo "Mise à jour réussie.";
+    } else {
+        echo "Aucune mise à jour n'a été effectuée.";
+    }
+
     header('Location:produit.php');
 }
+
 
 $stmt = $pdo->query('SELECT * FROM produit');
 ?>

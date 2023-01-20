@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db.php';
+require_once '../db/db.php';
 
 if (isset($_POST['update_btn'])) {
         $id = intval($_GET['id']);
@@ -31,12 +31,13 @@ if (isset($_POST['update_btn'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style/style.css">
+
         <title>Metre a jour Produit</title>
 </head>
 
-<?php require_once 'navbar.php'; ?>
 
-<body>
+<section id="hero">
         <h1>Metre a jour ce Produit </h1>
 
         <div class="container">
@@ -60,7 +61,8 @@ if (isset($_POST['update_btn'])) {
                                         <form action="" method="POST" class="form-group">
                                                 Nom Produit :
                                                 <input type="text" name="nom_prod" id="nom_prod" class="form-control" value="<?php echo $row->nom_prod; ?>">
-                                                <input type="submit" name="update_btn" id="" value="Metre a jour" class="btn btn-primary mt-3">
+                                                <input type="submit" name="update_btn" value="Metre a jour" class="btn btn-primary mt-3">
+                                                <a href="./produit.php" type="submit" class="btn btn-primary mt-3">Annuler</a>
                                         </form>
                                 <?php } ?>
 
@@ -68,8 +70,8 @@ if (isset($_POST['update_btn'])) {
                 </div>
         </div>
 
-</body>
+</section>
 
-<?php require_once 'footer.php'; ?>
+<?php require_once '../style/bS.php'; ?>
 
 </html>
