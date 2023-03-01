@@ -6,10 +6,11 @@ if (isset($_POST['update_btn'])) {
         $id = intval($_GET['id']);
         $nom_prod = $_POST['nom_prod'];
 
-        $sql = "UPDATE produit SET nom_prod=:nom_prod WHERE id_prod=:id";
+        $sql = "UPDATE produit SET nom_prod = :nom_prod WHERE id_prod = :id_prod";
         $query = $pdo->prepare($sql);
 
-        $query->bindParam(':id', $id);
+        $query->bindParam(':nom_prod', $nom_prod);
+        $query->bindParam(':id_prod', $id);
         $query->execute();
 
         // Vérification du nombre de lignes affectées

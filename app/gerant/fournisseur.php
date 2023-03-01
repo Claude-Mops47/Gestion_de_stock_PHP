@@ -113,7 +113,7 @@ if (isset($_REQUEST['del'])) {
                                 <td><?php echo $row->email; ?> </td>
                                 <td><?php echo $row->adresse; ?> </td>
                                 <td>
-                                    <a href="updateProduit.php?id=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                                    <a href="updateFournisseur.php?id=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
                                     <a href="fournisseur.php?del=<?php echo $row->id_fournisseur; ?>"><button class="btn btn-danger" OnClick="return confirm ('Voulez vous vraiment suprimer ?')"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
